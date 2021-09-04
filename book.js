@@ -5,10 +5,10 @@ const bookContainer = document.getElementById("book-div");
 const pin = document.getElementById("pin");
 pin.style.display = 'none';
 const bookNumber = document.getElementById("books");
-const error = document.getElementById("error");
+const error = document.getElementById("identity");
 
 // search button 
-document.getElementById("search-button").addEventListener('click', () => {
+document.getElementById("search").addEventListener('click', () => {
     const inputField = document.getElementById("input");
     const inputFieldText = inputField.value;
 
@@ -37,10 +37,10 @@ document.getElementById("search-button").addEventListener('click', () => {
     // fetching our part 
     fetch(url)
         .then(res => res.json())
-        .then(data => showBookDetails(data.docs.slice(0, 30), data.numFound));
+        .then(data => bookDetails(data.docs.slice(0, 30), data.numFound));
 })
 
-const showBookDetails = (books, numberOfBooks) => {
+const bookDetails = (books, numberOfBooks) => {
     // error handling 
     if (numberOfBooks === 0) {
         error.innerText = 'No Result Found';
