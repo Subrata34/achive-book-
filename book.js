@@ -1,25 +1,27 @@
-// global variables 
-const bookNumber = document.getElementById("book-number");
-const bookContainer = document.getElementById("book-container");
-const error = document.getElementById("error");
-const spinner = document.getElementById("spinner");
-spinner.style.display = 'none';
+// from html files variables 
 
-// event handler on search button 
+const bookContainer = document.getElementById("book-div");
+
+const pin = document.getElementById("pin");
+pin.style.display = 'none';
+const bookNumber = document.getElementById("books");
+const error = document.getElementById("error");
+
+// search button 
 document.getElementById("search-button").addEventListener('click', () => {
-    const inputField = document.getElementById("input-field");
+    const inputField = document.getElementById("input");
     const inputFieldText = inputField.value;
 
-    // clearing the existing results 
+    // clearing  existing results 
     bookNumber.textContent = '';
     bookContainer.textContent = '';
 
-    // clearing the input field
+    // clearing the input text
     inputField.value = '';
 
-    // error handling if search input is empty
+    //  search input is empty
     if (inputFieldText === '') {
-        error.innerText = 'Search field can not be empty';
+        error.innerText = 'Search can not  empty files';
         return;
     }
     else {
@@ -27,22 +29,22 @@ document.getElementById("search-button").addEventListener('click', () => {
     }
 
     // spinner on
-    spinner.style.display = 'block';
+    pin.style.display = 'block';
 
-    // set the url
+    //  url link
     const url = `https://openlibrary.org/search.json?q=${inputFieldText}`;
 
-    // fetching part
+    // fetching our part 
     fetch(url)
         .then(res => res.json())
         .then(data => showBookDetails(data.docs.slice(0, 30), data.numFound));
 })
 
 const showBookDetails = (books, numberOfBooks) => {
-    // error handling if search something that is not in the server
+    // error handling 
     if (numberOfBooks === 0) {
         error.innerText = 'No Result Found';
-        spinner.style.display = 'none';
+        pin.style.display = 'none';
         return;
     }
     else {
@@ -50,12 +52,12 @@ const showBookDetails = (books, numberOfBooks) => {
     }
 
     // spinner off 
-    spinner.style.display = 'none';
+    pin.style.display = 'none';
 
-    // showing the number of books found after searching
+    //   after searching
     bookNumber.innerHTML = `<h1 class="fw-light">Total Books Found: ${numberOfBooks}</h1>`;
 
-    // display all the results 
+    // display  Results 
     books.forEach(book => {
         const div = document.createElement('div');
         div.classList.add('col');
