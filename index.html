@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
-    crossorigin="anonymous">
+    <title>Book Archive</title>
+    <!-- bootstrap css link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
+
 <body>
-       <!-- search book area -->
-    <h1 class='text-center'>Search Your Books</h1>
-    <div class="input-group mb-3 w-50 mx-auto">
-        <input id='search-field' type="text" class="form-control" placeholder="Search Your Book Name" 
-        aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button onclick="book()" class="btn btn-outline-secondary" type="button" id="button-addon2" id='button-search'>Search</button>
-    </div>
-<!-- <div id ='searchingBook'>
+    <main>
+        
+        <section class="container mt-5 bg-success py-5">
+        <h1 class="text-center text-white mb-3">Search Your Book </h1>
 
-</div> -->
-   <!-- search book result  -->
-<div id='search-result' class="row row-cols-1 row-cols-md-3 g-4">
-    
-   
-    <div class="col">
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-   
-  </div>
+            <!-- search area starts -->
+            <div class="input-group mt-3 w-50 text-center">
+                <input id="input-field"  type="text" class="form-control" placeholder="Search Your Favorite Books"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn bg-dark text-white" type="button" id="search-button">Search button</button></button>
+            </div>
+            <h4 class=" text-white bg-dark p-3 mt-3">Please Search  Book and Book Author Name</h4>
+            <!-- search area ends -->
+        </section>
+        <!-- spinner -->
+        <section id="spinner" class="text-center my-4">
+            <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
- integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" 
- crossorigin="anonymous"></script>
+        <section id="error" class="text-center text-danger fs-1 fw-light"></section>
+
+        <section id="book-number" class="text-center my-4"></section>
+
+        <section class="container my-4">
+            <div id="book-container" class="row row-cols-1 row-cols-md-3 g-4">
+            </div>
+        </section>
+    </main>
+
+    <!--js link -->
     <script src="book.js"></script>
 
 </body>
+
 </html>
